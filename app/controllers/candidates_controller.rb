@@ -1,14 +1,35 @@
 class CandidatesController < ApplicationController
   before_action :set_candidate, only: [:show, :edit, :update, :destroy]
-
+  
   # GET /candidates
   # GET /candidates.json
   def index
-    @candidates = Candidate.all
+    unless params[:sort].nil?
+      @candidates = Candidate.default_sort(params[:sort], params[:type])
+    else
+      @candidates = Candidate.all
+    end
   end
 
-  # GET /candidates/1
-  # GET /candidates/1.json
+  def dashboard
+    redirect to candidate_path
+  end
+
+  def filter_result
+    if filter_params!={}
+      @filter_query = filter_params
+    end
+    print "boooooooooooooo"
+    print filter_params
+    unless params[:sort].nil?
+      @candidates = Candidate.filter_records( params[:query], params[:sort], params[:type])
+    else
+      @candidates = Candidate.filter_records( filter_params )
+    end
+    render "index"
+  end
+  
+
   def show
   end
 
@@ -71,4 +92,9 @@ class CandidatesController < ApplicationController
     def candidate_params
       params.require(:candidate).permit(:date_of_registration, :date_of_closure, :address, :age, :branch, :contact_number, :email, :experience, :gender, :name, :qualification, :registration_number, :remarks, :specialization, :source_of_registration, :state, :status, :zone)
     end
+
+    def filter_params
+      params.permit(:date_of_registration,:date_of_closure,:source_of_registration,:zone,:name,:branch,:state,:status,:custom_day)
+    end
+
 end
