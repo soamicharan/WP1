@@ -23,7 +23,7 @@ $(document).ready(function() {
 });
 </script>
 
-<div style="padding-top:20px;">
+<div style="padding-top:20px; display: none;" id="filter">
     <%= form_tag filter_result_path ,method: :get  do |form| %>
       <div class="table-responsive table-bordered">
         <table class="table">
