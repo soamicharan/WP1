@@ -31,22 +31,24 @@ class Candidate < ApplicationRecord
                     start_date, end_date = value.split(' - ')
                     filter_result = filter_result.where("#{field} BETWEEN ? AND ?",start_date,end_date)
                 end
-            elsif field == "custom_days"
-                current_date = Date.today
-                if field == "Greater than 365 days"
-                    required_date=current_date-365
-                    filter_result = filter_result.where("date_of_registration <= ?",required_date)
-                elsif field == "Between 180 to 365 days"
-                    start_date = current_date - 365
-                    end_date = current_date - 180
-                    filter_result = filter_result.where("date_of_registration BETWEEN ? AND ?",start_date,end_date)
-                elsif field == "Between 60 to 180 days"
-                    start_date = current_date - 180
-                    end_date = current_date - 60
-                    filter_result = filter_result.where("date_of_registration BETWEEN ? AND ?",start_date,end_date)
-                else
-                    required_date=current_date-60
-                    filter_result = filter_result.where("date_of_registration >= ?",required_date)
+            elsif field == "custom_day"
+                unless value.blank?
+                    current_date = Date.today
+                    if value == "Greater than 365 days"
+                        required_date=current_date-365
+                        filter_result = filter_result.where("date_of_registration < ?",required_date)
+                    elsif value == "Between 180 to 365 days"
+                        start_date = current_date - 365
+                        end_date = current_date - 180
+                        filter_result = filter_result.where("date_of_registration BETWEEN ? AND ?",start_date,end_date)
+                    elsif value == "Between 60 to 180 days"
+                        start_date = current_date - 180
+                        end_date = current_date - 60
+                        filter_result = filter_result.where("date_of_registration BETWEEN ? AND ?",start_date,end_date)
+                    else
+                        required_date=current_date-60
+                        filter_result = filter_result.where("date_of_registration >= ?",required_date)
+                    end
                 end
             else
                 unless value.blank?

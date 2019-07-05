@@ -28,10 +28,10 @@ $(document).ready(function() {
 });
 </script>
 
-<div style="padding-top:20px; display: none;" id="filter">
+<div style="padding-left:5%;padding-right:5%;padding-top:40px; display: none;" id="filter">
     <%= form_tag filter_result_path ,method: :get  do |form| %>
       <div class="table-responsive table-bordered">
-        <table class="table">
+        <table class="table table-striped ">
           <tbody>
           <tr>
             <td>
@@ -103,10 +103,11 @@ $(document).ready(function() {
           </tr>
         </tbody>
       </table>
-    </div><br>
-    <div class="actions text-center">
+      <div class="actions text-center" style="padding:3px;">
       <%= submit_tag "Filter",class: "btn btn-theme"%>
     </div>
+    </div>
+    
   <% end %>
 </div>
 <style>

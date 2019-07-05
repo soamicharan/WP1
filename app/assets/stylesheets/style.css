@@ -69,9 +69,9 @@ a:hover, a:focus {
 
 .btn {
   display: inline-block;
-  padding: 10px 20px;
+  padding: 5px 15px;
   margin-bottom: 0;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: normal;
   line-height: 1.42857143;
   text-align: center;
@@ -87,7 +87,7 @@ a:hover, a:focus {
   background-image: none;
   border: 1px solid transparent;
   border-radius: 4px;
-  color: #666;
+  color: rgb(255, 255, 255);
   background-color: #0BA9F9;
 }
 .btn:hover {
@@ -127,14 +127,14 @@ a:hover, a:focus {
   border-radius: 0;
   margin-bottom: 0;
   background: #2bb8ff;
-  padding: 21px 0;
+  padding: 10px 0;
   padding-bottom: 0;
 }
 
 
 
 .navbar-nav{
-  margin-top: 12px;
+  margin-top: 10px;
  }
 
  @media (max-width: 767px) {
@@ -154,11 +154,11 @@ a:hover, a:focus {
 
 .navbar-nav>li{
   margin-left: 20px;
-  padding-bottom: 28px;
+  padding-bottom: 25px;
 }
 
 .navbar-fixed-top .navbar-nav > li > a {
-	padding: 5px 12px;
+	padding: 2px 12px;
 	margin: 0;
 	border-radius: 3px;
 	color: #ffd;

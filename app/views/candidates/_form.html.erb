@@ -1,9 +1,12 @@
-<div class="container" style="padding-top:50px">
+<div class="container" style="padding-top:20px">
   <div class="contractForm">
     <div class-"card">
       <div class="row">
         <div class="col-sm-4"></div>
         <div class="col-sm-4">
+        <div class="text-center">
+          <h2> Edit Candidate Details</h2>
+        </div>
           <%= form_with(model: candidate, local: true) do |form| %>
             <% if candidate.errors.any? %>
               <div class="alert alert-warning" >

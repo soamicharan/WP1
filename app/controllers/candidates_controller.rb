@@ -12,6 +12,11 @@ class CandidatesController < ApplicationController
     else
       @candidates = Candidate.all
     end
+    respond_to do |format|        
+      format.html
+      format.xlsx {response.headers['Content-Disposition'] = 'attachment; filename="candidates.xlsx"'}  
+    end
+    
   end
 
   def dashboard
@@ -28,25 +33,13 @@ class CandidatesController < ApplicationController
     end
     render "index"
   end
-  
-
-  def show
-  end
-
-  # GET /candidates/new
+ 
   def new
     @candidate = Candidate.new
   end
 
-  # GET /candidates/1/edit
-  def edit
-  end
-
-  # POST /candidates
-  # POST /candidates.json
   def create
     @candidate = Candidate.new(candidate_params)
-
     respond_to do |format|
       if @candidate.save
         @candidate.update(registration_number: "NZ/" + @candidate.source_of_registration + "/" + @candidate.id.to_s)
@@ -59,8 +52,6 @@ class CandidatesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /candidates/1
-  # PATCH/PUT /candidates/1.json
   def update
     respond_to do |format|
       if @candidate.update(candidate_params)
@@ -74,8 +65,6 @@ class CandidatesController < ApplicationController
     end
   end
 
-  # DELETE /candidates/1
-  # DELETE /candidates/1.json
   def destroy
     @candidate.destroy
     respond_to do |format|
@@ -85,12 +74,11 @@ class CandidatesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_candidate
       @candidate = Candidate.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def candidate_params
       params.require(:candidate).permit(:date_of_registration, :date_of_closure, :address, :age, :branch, :contact_number, :email, :experience, :gender, :name, :qualification, :registration_number, :remarks, :specialization, :source_of_registration, :state, :status, :zone)
     end

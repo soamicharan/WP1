@@ -65,4 +65,4 @@ gem 'rubocop'
 gem 'jquery-rails' # dependency of daterangepicker
 gem 'momentjs-rails' # dependency of daterangepicker
 gem 'bootstrap-daterangepicker-rails'
-gem 'jquery-ui-rails'
+gem 'axlsx_rails'

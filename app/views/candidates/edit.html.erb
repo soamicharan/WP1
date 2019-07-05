@@ -2,5 +2,7 @@
 
 <%= render 'form', candidate: @candidate %>
 
-<%= link_to 'Show', @candidate %> |
-<%= link_to 'Back', candidates_path %>
+<div class="text-center" style="padding:5px">
+    <%= link_to 'Show', @candidate, class:"btn btn-default" %> |
+    <%= link_to 'Back', candidates_path, class:"btn btn-default" %>
+</div>
