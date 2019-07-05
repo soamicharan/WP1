@@ -1,10 +1,10 @@
 <script>
-  $(document).ready(function () {
-      $(".filter_page").hide();
-      $("#fil").click(function() {
-          $(".filter_page").toggle();
-      });
-  });
+$(document).ready(function(){
+  
+});
+function toggleFilter(){
+  $("#filter").toggle();
+}
 </script>
 <body style="padding-top:60px;">
   <div class="filter_page">
@@ -59,7 +59,7 @@
   <br>
   <div class="text-center">
     <%= link_to 'Create', new_candidate_path,class:"btn btn-default",style:"margin:10px;"%>
-    <a class="btn btn-default" id="fil" style="margin:10px;">Filter</a>
+    <a class="btn btn-default" id="fil" style="margin:10px;" onClick="toggleFilter()">Filter</a>
     <%if current_user && current_user.admin %>
       
     <%end %>
