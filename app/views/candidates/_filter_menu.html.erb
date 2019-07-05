@@ -1,5 +1,5 @@
 <script>
-$(function() {
+$(document).ready(function() {
   $('input[name="date_of_registration"]').daterangepicker({
     autoUpdateInput: false,
     opens: 'center'
@@ -22,6 +22,7 @@ $(function() {
   });
 });
 </script>
+
 <div style="padding-top:20px;">
     <%= form_tag filter_result_path ,method: :get  do |form| %>
       <div class="table-responsive table-bordered">

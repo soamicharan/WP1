@@ -7,15 +7,22 @@ class Candidate < ApplicationRecord
     validates :email, presence:{message:"is required."}, 
               uniqueness: {message:"is already exist."},
               format: {with:/@/,message:"must contain @."}
-  
-    def self.default_sort(sort_field,sort_type)
+    
+    
+    # TODO: change name to a short name
+    # FIXME: Add a space before and after {}
+    def self.sort(sort_field,sort_type)
         if sort_type == "ASC"
             return Candidate.all.order(sort_field.to_sym)
         else
             return Candidate.all.order(sort_field.to_sym).reverse_order
         end
     end
-
+    # FIXME: length of any code in a line should be within 80
+    # FIXME: add spaces after a period
+  # TODO: name shouold be self explanatory
+  # OPTIMISE: Know difference between find_by_id and find. Its usage and benchmarking
+  # FIXME: add apaces before and after operator
     def self.filter_records(filter_params, sort_field = "registration_number", sort_type = "ASC")
         filter_result = Candidate.all
         filter_params.each do |field, value|

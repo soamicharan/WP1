@@ -1,11 +1,14 @@
 class CandidatesController < ApplicationController
   before_action :set_candidate, only: [:show, :edit, :update, :destroy]
-  
-  # GET /candidates
-  # GET /candidates.json
+  # TODO: move to application controller
+  # TODO: this should be a constant in model
+    # TODO: know difference between symbol and string and replace 
+    # TODO: know difference between hash and hash with indifferent access
   def index
+    # TODO: Move business logic to model
+    # TODO: know about all the callbacks
     unless params[:sort].nil?
-      @candidates = Candidate.default_sort(params[:sort], params[:type])
+      @candidates = Candidate.sort(params[:sort], params[:type])
     else
       @candidates = Candidate.all
     end
@@ -16,14 +19,11 @@ class CandidatesController < ApplicationController
   end
 
   def filter_result
-    if filter_params!={}
-      @filter_query = filter_params
-    end
-    print "boooooooooooooo"
-    print filter_params
     unless params[:sort].nil?
-      @candidates = Candidate.filter_records( params[:query], params[:sort], params[:type])
+      @filter_query = params[:query]
+      @candidates = Candidate.filter_records( eval(params[:query]), params[:sort], params[:type])
     else
+      @filter_query = filter_params.to_s
       @candidates = Candidate.filter_records( filter_params )
     end
     render "index"
@@ -49,6 +49,7 @@ class CandidatesController < ApplicationController
 
     respond_to do |format|
       if @candidate.save
+        @candidate.update(registration_number: "NZ/" + @candidate.source_of_registration + "/" + @candidate.id.to_s)
         format.html { redirect_to @candidate, notice: 'Candidate was successfully created.' }
         format.json { render :show, status: :created, location: @candidate }
       else
@@ -63,6 +64,7 @@ class CandidatesController < ApplicationController
   def update
     respond_to do |format|
       if @candidate.update(candidate_params)
+        @candidate.update(registration_number: "NZ/" + @candidate.source_of_registration + "/" + @candidate.id.to_s)
         format.html { redirect_to @candidate, notice: 'Candidate was successfully updated.' }
         format.json { render :show, status: :ok, location: @candidate }
       else
