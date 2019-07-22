@@ -31,7 +31,7 @@
                     var layout = {
                         title:' <%=" #{date.strftime('%B %Y')}"%>',
                         paper_bgcolor: "rgba(204, 218, 255,1)",
-                        <%if data.empty?%>
+                        <%if status_data.empty?%>
                             annotations: [
                                 {
                                     text: 'No status created or updated',
@@ -65,7 +65,7 @@
                     var layout = {
                         title:' <%=" #{date.strftime('%B %Y')}"%>',
                         paper_bgcolor: "rgba(204, 218, 255,1)",
-                        <%if data.empty?%>
+                        <%if status_data.empty?%>
                             annotations: [
                                 {
                                     text: 'No status created or updated',
