@@ -24210,3 +24210,12 @@ Processing by CandidatesController#dashboard as HTML
 Completed 200 OK in 66ms (Views: 52.6ms | ActiveRecord: 9.7ms)
 
 
+  [1m[36mCandidate Load (0.6ms)[0m  [1m[34mSELECT  "candidates".* FROM "candidates" WHERE "candidates"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCandidate Load (1.3ms)[0m  [1m[34mSELECT  "candidates".* FROM "candidates" WHERE "candidates"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mCandidate Load (1.2ms)[0m  [1m[34mSELECT  "candidates".* FROM "candidates" WHERE "candidates"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mCandidate Load (1.3ms)[0m  [1m[34mSELECT  "candidates".* FROM "candidates" WHERE "candidates"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "candidates" WHERE "candidates"."id" = $1[0m  [["id", 7]]
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "candidates" WHERE "candidates"."id" = $1[0m  [["id", 70]]
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT COUNT(*) AS count_all, "candidates"."experience" AS candidates_experience FROM "candidates" GROUP BY "candidates"."experience"[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT COUNT(*) AS count_all, "candidates"."qualification" AS candidates_qualification FROM "candidates" GROUP BY "candidates"."qualification"[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT COUNT(*) AS count_all, "candidates"."mobility" AS candidates_mobility FROM "candidates" GROUP BY "candidates"."mobility"[0m
