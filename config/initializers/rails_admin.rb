@@ -6,6 +6,7 @@ RailsAdmin.config do |config|
   end
 
   config.excluded_models << Candidate
+  config.excluded_models << Conuselling
   ### Popular gems integration
 
   ## == Devise ==
