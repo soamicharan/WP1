@@ -3,8 +3,7 @@
 # This shiny device polishes bared foos
 class Candidate < ApplicationRecord
   has_many :counsellings
-  scope :count_status, -> { group(:status).count }
-  scope :count_source_of_registration, -> { group(:source_of_registration).count }
+
   validates :source_of_registration, inclusion: {
     in: %w[R KH], message: 'Must be selected'
   }
@@ -23,6 +22,13 @@ class Candidate < ApplicationRecord
 
   def update_source
     update(registration_number: 'NZ/' + source_of_registration + '/' + id.to_s)
+  end
+
+  def self.total_status
+    total_status = Candidate.group(:status).count
+    total_registrations = Candidate.group(:source_of_registration).count
+    total_data = total_status.merge(total_registrations)
+    total_data
   end
 
   def self.get_status(date)
