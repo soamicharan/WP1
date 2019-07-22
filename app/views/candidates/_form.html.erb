@@ -1,0 +1,92 @@
+<div class="container" style="padding-top:20px">
+  <div class="contractForm">
+    <div class-"card">
+      <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+        <div class="text-center">
+          <h2> Edit Candidate Details</h2>
+        </div>
+          <%= form_with(model: candidate, local: true) do |form| %>
+            <% if candidate.errors.any? %>
+              <div class="alert alert-warning" >
+                <h2><%= pluralize(candidate.errors.count, "error") %> prohibited this candidate details from being saved.</h2>
+                <ul>
+                  <% candidate.errors.full_messages.each do |message| %>
+                    <li class="alert alert-danger"><%= message %></li>
+                  <% end %>
+                </ul>
+             </div>
+            <% end %>
+            <div class="form-group">
+              <span style="font-weight:bold;font-size:15px;">Date of Registration </span><br>
+              <%= form.date_select :date_of_registration , {order: [:day, :month, :year]}, { class: "datetime" }%>
+            </div>
+            <div class="form-group">
+              <%= form.text_field :name,class: "form-control",placeholder: "Name" %>
+            </div>
+            <div class="form-group">
+              <%= form.select :source_of_registration ,["R","KH"],{include_blank: "Select source of registration"},{:class=> "form-control"}%>
+            </div>
+            <div class="form-group">
+              <%= form.select :gender ,["Male","Female"],{include_blank: "Select Gender"},{:class=> "form-control"}%>
+            </div>
+            <div class="form-group">
+              <%= form.number_field :age,class: "form-control",placeholder: "Age" %>
+            </div>
+            <div class="form-group">
+              <%= form.text_field :branch,class: "form-control",placeholder: "Branch" %>
+            </div>
+            <div class="form-group">
+              <%= form.text_field :email,class: "form-control",placeholder: "Email" %>
+            </div>
+            <div class="form-group">
+              <%= form.text_field :contact_number,class: "form-control",placeholder: "Contact number",maxlength: "10" %>
+            </div>
+            <div class="form-group">
+              <%= form.text_area :address ,class: "form-control",placeholder: "Address"%>
+            </div>
+            <div class="form-group">
+              <%= form.select :state, STATES, {include_blank: "Select State"},{:class=> "form-control"}%>
+            </div>
+            <div class="form-group">
+              <%= form.text_field :zone,class: "form-control",placeholder: "Zone" %>
+            </div>
+            <div class="form-group">
+              <%= form.text_field :qualification,class: "form-control",placeholder: "Qualification" %>
+            </div>
+            <div class="form-group">
+              <%= form.text_field :specialization,class: "form-control",placeholder: "Specialization" %>
+            </div>
+            <div class="form-group">
+              <%= form.text_field :experience,class: "form-control",placeholder: "Experience" %>
+            </div>
+            <div class="form-group">
+              <%= form.select :remarks,[1,2,3,4,5,6,7,8,9,10] ,{include_blank: "Select Remarks"},{:class=> "form-control"}%>
+            </div>
+            <div class="form-group">
+              <span style="font-weight:bold;font-size:15px;">Date of Closure </span><br>
+              <%= form.date_select :date_of_closure, {order: [:day, :month, :year],:include_blank=>true }, { class: "datetime" }%>
+            </div>
+            <div class="form-group">
+              <%= form.select :status, STATUS,{include_blank: "Select Status"},{:class=> "form-control"}%>
+            </div>
+            <div class="form-group">
+              <%= form.text_field :mobility,class: "form-control",placeholder: "Mobility" %>
+            </div>
+            <div class="actions text-center">
+              <%= form.submit class:"btn btn-theme"%>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+.datetime {
+  width: 116.5px;
+  height: 30px;
+  text-indent: 15px;
+}
+</style>
